@@ -6,233 +6,214 @@
   <title>Framework | Pretty & Paid</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --gold: #C9A84C;
-      --gold-light: #E8D5A3;
-      --gold-pale: #FAF6ED;
-      --deep: #1A1410;
-      --surface: #FAF8F5;
-      --text: #2C2018;
-      --text-muted: #6B5744;
-      --text-dim: #A89080;
-      --border: rgba(201,168,76,0.2);
-      --border-strong: rgba(201,168,76,0.4);
-      --rose: #C4788A;
-      --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body: 'Lato', sans-serif;
-      --radius: 8px;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --bg-main:#1a0508;--bg-dark:#130308;--bg-panel:#220a14;--bg-panel-2:#2a0e18;
+      --pink:#d4156b;--pink-deep:#a00d50;--pink-light:#fce4f1;--pink-mid:#f7c8df;
+      --black:#200810;--off-white:#fdf8fa;--white:#ffffff;
+      --border:rgba(212,21,107,0.18);--shadow:0 24px 64px rgba(0,0,0,0.28);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--surface); color: var(--text); font-family: var(--font-body); line-height: 1.7; }
+    html{scroll-behavior:smooth;}
+    body{font-family:"Montserrat",sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    img{display:block;max-width:100%;}
 
     /* NAV */
-    nav { background: var(--deep); padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-logo img { height: 36px; width: auto; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-links a.active { color: var(--gold); }
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 48px;background:rgba(30,8,18,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,21,107,0.2);}
+    .nav-brand-wrap{display:inline-flex;align-items:center;gap:14px;}
+    .nav-logo{width:52px;height:52px;border-radius:50%;object-fit:cover;}
+    .nav-brand{font-family:"Playfair Display",serif;font-size:20px;font-weight:700;color:var(--white);letter-spacing:0.02em;}
+    .nav-brand span{color:var(--pink);font-style:italic;}
+    .nav-links{display:flex;align-items:center;gap:26px;list-style:none;}
+    .nav-links a{font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.72);transition:color 0.2s;}
+    .nav-links a:hover,.nav-links a.is-active{color:var(--white);}
+    .nav-cta{display:inline-flex;align-items:center;justify-content:center;background:var(--pink);color:var(--white);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:12px 28px;border-radius:2px;border:none;cursor:pointer;transition:background 0.2s,transform 0.2s;white-space:nowrap;text-decoration:none;}
+    .nav-cta:hover{background:var(--pink-deep);transform:translateY(-2px);}
 
-    /* HERO */
-    .page-hero { text-align: center; padding: 5rem 2rem 4rem; max-width: 700px; margin: 0 auto; }
-    .eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 12px; }
-    .eyebrow::before, .eyebrow::after { content: ''; display: inline-block; width: 40px; height: 0.5px; background: var(--gold-light); }
-    .page-hero h1 { font-family: var(--font-display); font-size: clamp(34px, 5vw, 52px); font-weight: 400; color: var(--text); line-height: 1.25; margin-bottom: 1.25rem; }
-    .page-hero h1 em { font-style: italic; color: var(--gold); }
-    .page-hero p { font-size: 16px; color: var(--text-muted); max-width: 520px; margin: 0 auto; line-height: 1.8; font-weight: 300; }
+    /* PAGE HERO */
+    .page-hero{position:relative;overflow:hidden;background:var(--bg-main);padding:160px 24px 84px;border-bottom:1px solid var(--border);}
+    .page-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(212,21,107,0.28) 0%,transparent 70%);pointer-events:none;}
+    .page-hero::after{content:"";position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--pink),transparent);}
+    .page-hero-inner{position:relative;z-index:1;text-align:center;max-width:720px;margin:0 auto;}
+    .page-kicker{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(212,21,107,0.5);padding:8px 20px;border-radius:40px;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--pink);margin-bottom:32px;}
+    .page-hero-title{font-family:"Playfair Display",serif;font-size:clamp(40px,6vw,72px);font-weight:900;line-height:1.02;letter-spacing:-0.02em;margin:0 auto 18px;}
+    .page-hero-title em{color:var(--pink);font-style:italic;}
+    .page-hero-sub{font-family:"Cormorant Garamond",serif;font-size:clamp(20px,2.8vw,26px);font-style:italic;font-weight:300;color:rgba(255,255,255,0.85);max-width:620px;line-height:1.5;margin:0 auto;}
 
-    /* PILLARS */
-    .pillars-section { max-width: 900px; margin: 0 auto; padding: 0 2rem 5rem; }
-    .section-label { text-align: center; margin-bottom: 2.5rem; }
-    .section-label h2 { font-family: var(--font-display); font-size: 28px; font-weight: 400; color: var(--text); margin-bottom: 8px; }
-    .section-label p { font-size: 14px; color: var(--text-muted); }
+    /* SECTIONS */
+    section{padding:100px 24px;}
+    .container{width:min(1100px,calc(100% - 48px));margin:0 auto;}
+    .section-pre{font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--pink);margin-bottom:16px;}
+    .section-title{font-family:"Playfair Display",serif;font-size:clamp(36px,5vw,56px);font-weight:900;line-height:1.05;letter-spacing:-0.02em;margin-bottom:20px;}
+    .section-title em{color:var(--pink);font-style:italic;}
+    .section-body{font-family:"Cormorant Garamond",serif;font-size:clamp(18px,2vw,22px);font-weight:300;line-height:1.8;color:rgba(255,255,255,0.75);max-width:720px;}
+    .section-body--center{margin-left:auto;margin-right:auto;text-align:center;}
+    .section-dark{background:var(--bg-panel);}
+    .section-deeper{background:var(--bg-panel-2);}
+    .text-center{text-align:center;}
 
-    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 3rem; }
-    .pillar { background: white; padding: 1.75rem 1.5rem; position: relative; transition: background 0.2s; }
-    .pillar:hover { background: var(--gold-pale); }
-    .pillar-number { font-family: var(--font-display); font-size: 13px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 8px; font-weight: 600; }
-    .pillar-name { font-family: var(--font-display); font-size: 19px; font-weight: 500; color: var(--text); line-height: 1.3; }
-    .pillar-lock { position: absolute; top: 1.25rem; right: 1.25rem; width: 16px; height: 16px; color: var(--text-dim); opacity: 0.4; }
+    /* PILLARS GRID */
+    .pillars-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(212,21,107,0.15);border:1px solid rgba(212,21,107,0.15);margin-top:64px;}
+    .pillar{position:relative;overflow:hidden;padding:36px 32px;background:var(--bg-panel-2);transition:background 0.3s;}
+    .pillar::after{content:"";position:absolute;bottom:0;left:0;width:100%;height:2px;background:var(--pink);transform:scaleX(0);transform-origin:left;transition:transform 0.35s;}
+    .pillar:hover{background:rgba(212,21,107,0.1);}
+    .pillar:hover::after{transform:scaleX(1);}
+    .pillar-num{font-family:"Playfair Display",serif;font-size:13px;font-weight:700;color:var(--pink);letter-spacing:0.1em;margin-bottom:12px;text-transform:uppercase;}
+    .pillar-title{font-family:"Playfair Display",serif;font-size:22px;font-weight:700;line-height:1.2;margin-bottom:10px;}
+    .pillar-lock{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+    .pillar-lock svg{width:13px;height:13px;flex-shrink:0;}
 
-    /* LOCKED MESSAGE */
-    .locked-banner { background: var(--deep); border-radius: var(--radius); padding: 2.5rem; text-align: center; margin-bottom: 3rem; }
-    .locked-banner h3 { font-family: var(--font-display); font-size: 24px; font-weight: 400; color: white; margin-bottom: 10px; }
-    .locked-banner h3 em { font-style: italic; color: var(--gold); }
-    .locked-banner p { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto 1.5rem; line-height: 1.8; }
-    .locked-btn { display: inline-block; padding: 14px 36px; background: var(--gold); color: var(--deep); border-radius: 50px; font-family: var(--font-body); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
-    .locked-btn:hover { background: var(--gold-light); }
+    /* LOCKED BANNER */
+    .locked-banner{background:var(--pink);padding:80px 24px;text-align:center;position:relative;overflow:hidden;}
+    .locked-banner::before{content:"\201C";position:absolute;top:-60px;left:40px;font-size:300px;font-weight:900;color:rgba(0,0,0,0.1);line-height:1;pointer-events:none;}
+    .locked-banner-inner{position:relative;z-index:1;max-width:640px;margin:0 auto;}
+    .locked-title{font-family:"Playfair Display",serif;font-size:clamp(28px,4vw,48px);font-style:italic;font-weight:400;line-height:1.3;margin-bottom:16px;}
+    .locked-body{font-family:"Cormorant Garamond",serif;font-size:clamp(18px,2.2vw,24px);font-weight:300;line-height:1.6;color:rgba(255,255,255,0.88);margin-bottom:36px;}
+    .locked-btn{display:inline-flex;align-items:center;justify-content:center;background:var(--white);color:var(--pink);font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:18px 42px;border-radius:2px;transition:background 0.2s,transform 0.2s;}
+    .locked-btn:hover{background:var(--pink-light);transform:translateY(-2px);}
 
-    /* WHAT YOU WALK AWAY WITH */
-    .takeaway-section { max-width: 900px; margin: 0 auto; padding: 0 2rem 5rem; }
-    .takeaway-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .takeaway-card { background: white; border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
-    .takeaway-card h4 { font-family: var(--font-display); font-size: 18px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
-    .takeaway-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    /* TAKEAWAYS */
+    .takeaway-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(212,21,107,0.15);border:1px solid rgba(212,21,107,0.15);margin-top:64px;}
+    .takeaway-card{position:relative;overflow:hidden;padding:36px 32px;background:var(--bg-panel);transition:background 0.3s;}
+    .takeaway-card::before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--pink);opacity:0;transition:opacity 0.3s;}
+    .takeaway-card:hover{background:rgba(212,21,107,0.08);}
+    .takeaway-card:hover::before{opacity:1;}
+    .takeaway-card h4{font-family:"Playfair Display",serif;font-size:24px;font-weight:700;line-height:1.2;margin-bottom:12px;}
+    .takeaway-card p{font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:300;line-height:1.6;color:rgba(255,255,255,0.8);}
 
     /* CTA */
-    .cta-section { background: var(--deep); padding: 4rem 2rem; text-align: center; }
-    .cta-section h2 { font-family: var(--font-display); font-size: 36px; font-weight: 400; color: white; margin-bottom: 12px; }
-    .cta-section h2 em { font-style: italic; color: var(--gold); }
-    .cta-section p { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 460px; margin: 0 auto 2rem; line-height: 1.8; }
-    .cta-price { font-family: var(--font-display); font-size: 42px; color: var(--gold); margin-bottom: 0.5rem; }
-    .cta-price-note { font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
-    .cta-btn { display: inline-block; padding: 16px 44px; background: var(--gold); color: var(--deep); border-radius: 50px; font-family: var(--font-body); font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
-    .cta-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
-    .cta-fine { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 1rem; }
+    .cta-section{text-align:center;background:linear-gradient(180deg,#220a14 0%,#18050a 100%);padding:100px 24px;}
+    .cta-price{font-family:"Playfair Display",serif;font-size:clamp(48px,6vw,80px);font-weight:900;color:var(--pink);line-height:1;margin-bottom:8px;}
+    .cta-note{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:40px;}
+    .hero-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:var(--pink);color:var(--white);font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:18px 42px;border-radius:2px;border:none;cursor:pointer;transition:background 0.3s,transform 0.3s;text-decoration:none;}
+    .hero-btn:hover{background:var(--pink-deep);transform:translateY(-2px);}
+    .hero-note{font-size:12px;color:rgba(255,255,255,0.42);margin-top:16px;letter-spacing:0.06em;}
 
     /* FOOTER */
-    footer { background: var(--deep); border-top: 0.5px solid rgba(255,255,255,0.06); padding: 2rem; text-align: center; }
-    footer p { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 2; }
+    .site-footer{padding:44px 24px 56px;background:var(--bg-dark);border-top:1px solid rgba(212,21,107,0.18);}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+    .footer-brand-wrap{display:inline-flex;align-items:center;gap:16px;}
+    .footer-logo{width:44px;height:44px;border-radius:50%;object-fit:cover;}
+    .footer-name{font-family:"Playfair Display",serif;font-size:18px;font-weight:700;}
+    .footer-name span{color:var(--pink);font-style:italic;}
+    .footer-copy{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+    .footer-links{display:flex;gap:18px;flex-wrap:wrap;list-style:none;}
+    .footer-links a{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.68);}
+    .footer-links a:hover{color:var(--white);}
 
-    @media (max-width: 700px) {
-      .pillars-grid { grid-template-columns: 1fr 1fr; }
-      .takeaway-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
+    @media(max-width:980px){
+      nav{padding:14px 22px;}
+      .nav-links{display:none;}
+      .pillars-grid{grid-template-columns:1fr 1fr;}
+      .takeaway-grid{grid-template-columns:1fr;}
     }
-    @media (max-width: 480px) {
-      .pillars-grid { grid-template-columns: 1fr; }
+    @media(max-width:640px){
+      .pillars-grid{grid-template-columns:1fr;}
+      section{padding:76px 14px;}
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <a class="nav-logo" href="index.html">
-      <img src="logo.png" alt="Pretty & Paid" />
+    <a class="nav-brand-wrap" href="index.html">
+      <img class="nav-logo" src="logo.png" alt="Pretty & Paid" />
+      <span class="nav-brand">Pretty <span>&</span> Paid</span>
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="framework.html" class="active">Framework</a></li>
+      <li><a href="framework.html" class="is-active">Framework</a></li>
       <li><a href="marketing.html">Launch Plan</a></li>
-      <li><a href="payment.html">Pay Now</a></li>
+      <li><a href="payment.html" class="nav-cta">Pay Now</a></li>
     </ul>
   </nav>
 
   <div class="page-hero">
-    <div class="eyebrow">The System</div>
-    <h1>12 Pillars. One <em>Complete</em> Room.</h1>
-    <p>Every successful conference is built on a foundation of decisions most women never get taught. Pretty & Paid covers all of them — in one day, in the room, with you.</p>
+    <div class="page-hero-inner">
+      <div class="page-kicker">The System</div>
+      <h1 class="page-hero-title">12 Pillars. One <em>Complete</em> Room.</h1>
+      <p class="page-hero-sub">Every successful conference is built on a foundation of decisions most women never get taught. Pretty & Paid covers all of them — in one day, in the room, with you.</p>
+    </div>
   </div>
 
-  <div class="pillars-section">
-    <div class="section-label">
-      <h2>The 12-Pillar Framework</h2>
-      <p>The names are visible. The method is taught inside the room.</p>
-    </div>
-
-    <div class="pillars-grid">
-      <div class="pillar">
-        <div class="pillar-number">01</div>
-        <div class="pillar-name">Concept & Vision</div>
-        <svg class="pillar-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+  <section class="section-deeper">
+    <div class="container">
+      <div class="text-center">
+        <p class="section-pre">The Framework</p>
+        <h2 class="section-title">The 12-Pillar <em>Operating System</em></h2>
+        <p class="section-body section-body--center">The names are visible. The method is taught inside the room.</p>
       </div>
-      <div class="pillar">
-        <div class="pillar-number">02</div>
-        <div class="pillar-name">Faith as Foundation</div>
-        <svg class="pillar-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <div class="pillar">
-        <div class="pillar-number">03</div>
-        <div class="pillar-name">Venue Strategy</div>
-        <svg class="pillar-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <div class="pillar">
-        <div class="pillar-number">04</div>
-        <div class="pillar-name">Sponsorship</div>
-        <svg class="pillar-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <div class="pillar">
-        <div class="pillar-number">05</div>
-        <div class="pillar-name">Community Involvement</div>
-        <svg class="pillar-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <div class="pillar">
-        <div class="pillar-number">06</div>
-        <div class="pillar-name">Team Building</div>
-        <svg class="pillar-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <div class="pillar">
-        <div class="pillar-number">07</div>
-        <div class="pillar-name">Programming</div>
-        <svg class="pillar-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <div class="pillar">
-        <div class="pillar-number">08</div>
-        <div class="pillar-name">Experience Design</div>
-        <svg class="pillar-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <div class="pillar">
-        <div class="pillar-number">09</div>
-        <div class="pillar-name">Marketing & Sales</div>
-        <svg class="pillar-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <div class="pillar">
-        <div class="pillar-number">10</div>
-        <div class="pillar-name">Event-Day Execution</div>
-        <svg class="pillar-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <div class="pillar">
-        <div class="pillar-number">11</div>
-        <div class="pillar-name">The Money Model</div>
-        <svg class="pillar-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <div class="pillar">
-        <div class="pillar-number">12</div>
-        <div class="pillar-name">After The Room</div>
-        <svg class="pillar-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <div class="pillars-grid">
+        <div class="pillar"><div class="pillar-num">01</div><div class="pillar-title">Concept & Vision</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
+        <div class="pillar"><div class="pillar-num">02</div><div class="pillar-title">Faith as Foundation</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
+        <div class="pillar"><div class="pillar-num">03</div><div class="pillar-title">Venue Strategy</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
+        <div class="pillar"><div class="pillar-num">04</div><div class="pillar-title">Sponsorship</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
+        <div class="pillar"><div class="pillar-num">05</div><div class="pillar-title">Community Involvement</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
+        <div class="pillar"><div class="pillar-num">06</div><div class="pillar-title">Team Building</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
+        <div class="pillar"><div class="pillar-num">07</div><div class="pillar-title">Programming</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
+        <div class="pillar"><div class="pillar-num">08</div><div class="pillar-title">Experience Design</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
+        <div class="pillar"><div class="pillar-num">09</div><div class="pillar-title">Marketing & Sales</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
+        <div class="pillar"><div class="pillar-num">10</div><div class="pillar-title">Event-Day Execution</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
+        <div class="pillar"><div class="pillar-num">11</div><div class="pillar-title">The Money Model</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
+        <div class="pillar"><div class="pillar-num">12</div><div class="pillar-title">After The Room</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
       </div>
     </div>
+  </section>
 
-    <div class="locked-banner">
-      <h3>The <em>how</em> lives inside the room.</h3>
-      <p>Every pillar is unpacked live with Kemi — the strategy, the language, the sequence, and the execution. This is not a workbook you read alone. It is a room you walk through together.</p>
+  <div class="locked-banner">
+    <div class="locked-banner-inner">
+      <p class="locked-title">"The how lives inside the room."</p>
+      <p class="locked-body">Every pillar is unpacked live with Kemi — the strategy, the language, the sequence, and the execution. This is not a workbook you read alone. It is a room you walk through together.</p>
       <a href="payment.html" class="locked-btn">Reserve My Seat →</a>
     </div>
-
   </div>
 
-  <div class="takeaway-section">
-    <div class="section-label">
-      <h2>What You Walk Away With</h2>
-      <p>Not inspiration. A real operating plan.</p>
-    </div>
-    <div class="takeaway-grid">
-      <div class="takeaway-card">
-        <h4>A Conference You Can Execute</h4>
-        <p>You leave with a clear concept, a venue strategy, and a plan that is ready to move — not still sitting in your head.</p>
+  <section class="section-dark">
+    <div class="container">
+      <div class="text-center">
+        <p class="section-pre">What You Walk Away With</p>
+        <h2 class="section-title">Not inspiration.<br /><em>A real operating plan.</em></h2>
       </div>
-      <div class="takeaway-card">
-        <h4>A Sponsorship Approach That Works</h4>
-        <p>You will know how to position your room so that businesses and aligned partners want to support it before the doors open.</p>
-      </div>
-      <div class="takeaway-card">
-        <h4>A Money Model That Makes Sense</h4>
-        <p>Tickets, sponsors, vendors, and add-ons — structured in a way that makes the room profitable, not just beautiful.</p>
-      </div>
-      <div class="takeaway-card">
-        <h4>The Confidence to Lead the Room</h4>
-        <p>You will understand what it means to be the CEO of your conference — and how to show up that way from day one.</p>
+      <div class="takeaway-grid">
+        <div class="takeaway-card"><h4>A Conference You Can Execute</h4><p>You leave with a clear concept, a venue strategy, and a plan that is ready to move — not still sitting in your head.</p></div>
+        <div class="takeaway-card"><h4>A Sponsorship Approach That Works</h4><p>You will know how to position your room so that businesses and aligned partners want to support it before the doors open.</p></div>
+        <div class="takeaway-card"><h4>A Money Model That Makes Sense</h4><p>Tickets, sponsors, vendors, and add-ons — structured in a way that makes the room profitable, not just beautiful.</p></div>
+        <div class="takeaway-card"><h4>The Confidence to Lead the Room</h4><p>You will understand what it means to be the CEO of your conference — and how to show up that way from day one.</p></div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="cta-section">
-    <h2>The system is waiting.<br /><em>So is your room.</em></h2>
-    <p>20 seats. One day. Everything you need to stop planning and start building.</p>
-    <div class="cta-price">$997</div>
-    <div class="cta-price-note">Payment plans available · 3 payments of $333</div>
-    <br />
-    <a href="payment.html" class="cta-btn">Reserve My Seat →</a>
-    <p class="cta-fine">Limited to 20 women per cohort</p>
-  </div>
+  <section class="cta-section">
+    <div class="container">
+      <p class="section-pre">The Next Step</p>
+      <h2 class="section-title">The system is waiting.<br /><em>So is your room.</em></h2>
+      <p class="section-body section-body--center">20 seats. One day. Everything you need to stop planning and start building.</p>
+      <div class="cta-price" style="margin-top:48px;">$997</div>
+      <p class="cta-note">Payment plans available · 3 payments of $333</p>
+      <a href="payment.html" class="hero-btn">Reserve My Seat →</a>
+      <p class="hero-note">Limited to 20 women per cohort</p>
+    </div>
+  </section>
 
-  <footer>
-    <p>Pretty & Paid · Plan It. Secure It. Profit.<br />
-    <span style="opacity:0.5;">© 2026 Life With Kemi · All Rights Reserved</span></p>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand-wrap">
+          <img class="footer-logo" src="logo.png" alt="Pretty & Paid" />
+          <span class="footer-name">Pretty <span>&</span> Paid</span>
+        </div>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="framework.html">Framework</a></li>
+          <li><a href="marketing.html">Launch Plan</a></li>
+          <li><a href="payment.html">Payment</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 Life With Kemi</p>
+      </div>
+    </div>
   </footer>
 
 </body>
