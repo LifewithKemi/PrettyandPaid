@@ -1,124 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Launch Plan | Pretty &amp; Paid</title>
-    <meta
-      name="description"
-      content="See the Pretty and Paid launch plan for filling the room with organic content, strong messaging, and direct follow-up."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body data-page="marketing">
-    <nav>
-      <a class="nav-brand-wrap" href="index.html" aria-label="Pretty and Paid home">
-        <img class="nav-logo" src="logo.png" alt="Pretty and Paid logo" />
-        <span class="nav-brand">Pretty <span>&amp;</span> Paid</span>
-      </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
-      <div class="nav-links" id="nav-links">
-        <a href="index.html" data-page="home">Home</a>
-        <a href="about.html" data-page="about">About</a>
-        <a href="framework.html" data-page="framework">Framework</a>
-        <a href="marketing.html" data-page="marketing">Launch Plan</a>
-        <a href="payment.html" class="nav-cta" data-page="payment">Pay Now</a>
-      </div>
-    </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Launch Plan | Pretty & Paid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8D5A3;
+      --gold-pale: #FAF6ED;
+      --deep: #1A1410;
+      --surface: #FAF8F5;
+      --text: #2C2018;
+      --text-muted: #6B5744;
+      --text-dim: #A89080;
+      --border: rgba(201,168,76,0.2);
+      --border-strong: rgba(201,168,76,0.4);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Lato', sans-serif;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--surface); color: var(--text); font-family: var(--font-body); line-height: 1.7; }
 
-    <section class="page-hero">
-      <div class="deco-line deco-line-1"></div>
-      <div class="page-hero-inner container">
-        <div class="page-kicker reveal">The Launch Plan</div>
-        <h1 class="page-hero-title reveal" style="text-align: center;">The room gets filled through message, proof, urgency, and follow-up.</h1>
-        <p class="page-hero-sub reveal">
-          Pretty &amp; Paid is not built on random posting. The launch strategy moves women
-          from awareness to interest to a real registration decision.
-        </p>
-      </div>
-    </section>
+    nav { background: var(--deep); padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { height: 36px; width: auto; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
 
-    <section class="section-deeper">
-      <div class="container">
-        <div class="section-pre reveal">Campaign Arc</div>
-        <h2 class="section-title reveal">The six-week sequence turns the room from idea into momentum.</h2>
-        <div class="marketing-grid">
-          <article class="marketing-card reveal"><div class="marketing-num">Week 1</div><h3 class="page-card-title">Disrupt the assumptions</h3><p class="marketing-text">Show women that a room can be built without waiting on perfect conditions.</p></article>
-          <article class="marketing-card reveal"><div class="marketing-num">Week 2</div><h3 class="page-card-title">Build authority</h3><p class="marketing-text">Share founder story, proof, and room credibility so the message feels trustworthy.</p></article>
-          <article class="marketing-card reveal"><div class="marketing-num">Week 3</div><h3 class="page-card-title">Introduce the offer</h3><p class="marketing-text">Reveal the room, the promise, the investment, and the limited-seat invitation.</p></article>
-          <article class="marketing-card reveal"><div class="marketing-num">Week 4</div><h3 class="page-card-title">Handle objections</h3><p class="marketing-text">Address money, confidence, readiness, and fear directly instead of hoping women ignore them.</p></article>
-          <article class="marketing-card reveal"><div class="marketing-num">Week 5</div><h3 class="page-card-title">Create urgency</h3><p class="marketing-text">Use timing, seat count, and proof to help undecided women make a choice.</p></article>
-          <article class="marketing-card reveal"><div class="marketing-num">Week 6</div><h3 class="page-card-title">Close and carry momentum forward</h3><p class="marketing-text">Finish the cohort well and direct future interest into a waitlist or next room.</p></article>
-        </div>
-      </div>
-    </section>
+    .page-hero { text-align: center; padding: 5rem 2rem 4rem; max-width: 700px; margin: 0 auto; }
+    .eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .eyebrow::before, .eyebrow::after { content: ''; display: inline-block; width: 40px; height: 0.5px; background: var(--gold-light); }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(34px, 5vw, 52px); font-weight: 400; color: var(--text); line-height: 1.25; margin-bottom: 1.25rem; }
+    .page-hero h1 em { font-style: italic; color: var(--gold); }
+    .page-hero p { font-size: 16px; color: var(--text-muted); max-width: 520px; margin: 0 auto; line-height: 1.8; font-weight: 300; }
 
-    <section class="section-dark">
-      <div class="container">
-        <div class="section-pre reveal">Message Types</div>
-        <h2 class="section-title reveal">Every strong launch balances belief, authority, and invitation.</h2>
-        <div class="detail-grid">
-          <article class="detail-card reveal"><h3 class="detail-title">Belief-Shifting Content</h3><p class="detail-text">Correct the lie that a woman needs money, structure, or celebrity before she can begin.</p></article>
-          <article class="detail-card reveal"><h3 class="detail-title">Authority Content</h3><p class="detail-text">Show proof, room philosophy, experience, and why the method works in real life.</p></article>
-          <article class="detail-card reveal"><h3 class="detail-title">Conversion Content</h3><p class="detail-text">Make the invitation clear, the next step obvious, and the urgency easy to understand.</p></article>
-          <article class="detail-card reveal"><h3 class="detail-title">Direct Follow-Up</h3><p class="detail-text">The highest-converting conversations often happen in replies, DMs, and personal follow-up.</p></article>
-        </div>
-      </div>
-    </section>
+    /* LAUNCH SECTION */
+    .launch-section { max-width: 860px; margin: 0 auto; padding: 0 2rem 5rem; }
+    .section-label { text-align: center; margin-bottom: 2.5rem; }
+    .section-label h2 { font-family: var(--font-display); font-size: 28px; font-weight: 400; color: var(--text); margin-bottom: 8px; }
+    .section-label p { font-size: 14px; color: var(--text-muted); }
 
-    <section class="section-light">
-      <div class="container">
-        <div class="section-pre reveal">Sample Content Direction</div>
-        <h2 class="section-title reveal">The launch tone should sound like the room: elegant, direct, and deeply clear.</h2>
-        <div class="page-card-grid">
-          <article class="page-card reveal">
-            <div class="page-card-meta">Founder Story</div>
-            <h3 class="page-card-title">“I built rooms before I had perfect conditions.”</h3>
-            <p class="page-card-text">Use story to disarm the belief that only already-established women can host meaningful events.</p>
-          </article>
-          <article class="page-card reveal">
-            <div class="page-card-meta">Short-Form Video</div>
-            <h3 class="page-card-title">“Three lies keeping women from building the room.”</h3>
-            <p class="page-card-text">Create content that is strong enough to save, share, and start conversations in comments and DMs.</p>
-          </article>
-          <article class="page-card reveal">
-            <div class="page-card-meta">Email</div>
-            <h3 class="page-card-title">“What if the conference didn’t come out of your pocket?”</h3>
-            <p class="page-card-text">Use email to handle nuance, objection work, urgency, and direct response.</p>
-          </article>
-          <article class="page-card reveal">
-            <div class="page-card-meta">Proof</div>
-            <h3 class="page-card-title">Show the atmosphere, not just the curriculum.</h3>
-            <p class="page-card-text">Women should be able to feel the room before they ever step into it.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+    .weeks-row { display: flex; gap: 0; margin-bottom: 3rem; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .week { flex: 1; background: white; padding: 1.5rem 1rem; text-align: center; border-right: 0.5px solid var(--border); position: relative; }
+    .week:last-child { border-right: none; }
+    .week-number { font-family: var(--font-display); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .week-title { font-family: var(--font-display); font-size: 16px; font-weight: 500; color: var(--text); line-height: 1.3; }
+    .week-lock { margin-top: 10px; }
+    .week-lock svg { width: 14px; height: 14px; color: var(--text-dim); opacity: 0.35; }
 
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <div class="footer-brand-wrap">
-          <img class="nav-logo" src="logo.png" alt="Pretty and Paid logo" />
-          <div>
-            <div class="footer-name">Pretty <span>&amp;</span> Paid</div>
-            <div class="footer-tagline">Plan It. Secure It. Profit.</div>
-          </div>
-        </div>
-        <div class="footer-links">
-          <a href="about.html">About</a>
-          <a href="framework.html">Framework</a>
-          <a href="marketing.html">Launch Plan</a>
-          <a href="payment.html">Payment</a>
-        </div>
-      </div>
-    </footer>
+    /* LOCKED BANNER */
+    .locked-banner { background: var(--deep); border-radius: var(--radius); padding: 2.5rem; text-align: center; margin-bottom: 3rem; }
+    .locked-banner h3 { font-family: var(--font-display); font-size: 24px; font-weight: 400; color: white; margin-bottom: 10px; }
+    .locked-banner h3 em { font-style: italic; color: var(--gold); }
+    .locked-banner p { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto 1.5rem; line-height: 1.8; }
+    .locked-btn { display: inline-block; padding: 14px 36px; background: var(--gold); color: var(--deep); border-radius: 50px; font-family: var(--font-body); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
+    .locked-btn:hover { background: var(--gold-light); }
 
-    <script src="script.js"></script>
-  </body>
+    /* PROMISE CARDS */
+    .promise-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 3rem; }
+    .promise-card { background: white; border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem; text-align: center; }
+    .promise-icon { font-size: 24px; margin-bottom: 10px; }
+    .promise-card h4 { font-family: var(--font-display); font-size: 17px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+    .promise-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+    /* CTA */
+    .cta-section { background: var(--deep); padding: 4rem 2rem; text-align: center; }
+    .cta-section h2 { font-family: var(--font-display); font-size: 36px; font-weight: 400; color: white; margin-bottom: 12px; }
+    .cta-section h2 em { font-style: italic; color: var(--gold); }
+    .cta-section p { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 460px; margin: 0 auto 2rem; line-height: 1.8; }
+    .cta-price { font-family: var(--font-display); font-size: 42px; color: var(--gold); margin-bottom: 0.5rem; }
+    .cta-price-note { font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
+    .cta-btn { display: inline-block; padding: 16px 44px; background: var(--gold); color: var(--deep); border-radius: 50px; font-family: var(--font-body); font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
+    .cta-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .cta-fine { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 1rem; }
+
+    footer { background: var(--deep); border-top: 0.5px solid rgba(255,255,255,0.06); padding: 2rem; text-align: center; }
+    footer p { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 2; }
+
+    @media (max-width: 700px) {
+      .weeks-row { flex-direction: column; }
+      .week { border-right: none; border-bottom: 0.5px solid var(--border); }
+      .week:last-child { border-bottom: none; }
+      .promise-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="logo.png" alt="Pretty & Paid" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="framework.html">Framework</a></li>
+      <li><a href="marketing.html" class="active">Launch Plan</a></li>
+      <li><a href="payment.html">Pay Now</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <div class="eyebrow">The Launch Strategy</div>
+    <h1>A full room is not an <em>accident.</em></h1>
+    <p>Pretty & Paid includes a complete six-week launch strategy that moves women from unaware to registered — without a massive following, paid ads, or guesswork.</p>
+  </div>
+
+  <div class="launch-section">
+
+    <div class="section-label">
+      <h2>Six Weeks. A Full Room.</h2>
+      <p>The sequence is intentional. The strategy is taught inside the masterclass.</p>
+    </div>
+
+    <div class="weeks-row">
+      <div class="week">
+        <div class="week-number">Week 01</div>
+        <div class="week-title">The Foundation</div>
+        <div class="week-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+      </div>
+      <div class="week">
+        <div class="week-number">Week 02</div>
+        <div class="week-title">The Authority</div>
+        <div class="week-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+      </div>
+      <div class="week">
+        <div class="week-number">Week 03</div>
+        <div class="week-title">The Invitation</div>
+        <div class="week-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+      </div>
+      <div class="week">
+        <div class="week-number">Week 04</div>
+        <div class="week-title">The Conversation</div>
+        <div class="week-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+      </div>
+      <div class="week">
+        <div class="week-number">Week 05</div>
+        <div class="week-title">The Decision</div>
+        <div class="week-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+      </div>
+      <div class="week">
+        <div class="week-number">Week 06</div>
+        <div class="week-title">The Close</div>
+        <div class="week-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+      </div>
+    </div>
+
+    <div class="locked-banner">
+      <h3>What happens in each week <em>stays in the room.</em></h3>
+      <p>The messaging strategy, the content approach, the exact language, and the follow-up system are all taught live. This is not a PDF. This is Kemi — in the room with you — walking through it step by step.</p>
+      <a href="payment.html" class="locked-btn">I Want In →</a>
+    </div>
+
+    <div class="section-label">
+      <h2>What the strategy is built on</h2>
+      <p>Three things fill a room. Pretty & Paid teaches all of them.</p>
+    </div>
+
+    <div class="promise-grid">
+      <div class="promise-card">
+        <div class="promise-icon">✦</div>
+        <h4>Belief</h4>
+        <p>Women register when they believe the room is for them and the person leading it knows the way.</p>
+      </div>
+      <div class="promise-card">
+        <div class="promise-icon">✦</div>
+        <h4>Proof</h4>
+        <p>15 years of rooms, results, and real women who walked in unsure and left with a plan.</p>
+      </div>
+      <div class="promise-card">
+        <div class="promise-icon">✦</div>
+        <h4>Clarity</h4>
+        <p>When the next step is obvious and the invitation is clear, the right women say yes.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cta-section">
+    <h2>Your room deserves a<br /><em>strategy behind it.</em></h2>
+    <p>Stop launching by feel. Come into the room and leave with a six-week plan built for your conference.</p>
+    <div class="cta-price">$997</div>
+    <div class="cta-price-note">or 3 payments of $333 · 30 days apart</div>
+    <br />
+    <a href="payment.html" class="cta-btn">Reserve My Seat →</a>
+    <p class="cta-fine">Limited to 20 women per cohort</p>
+  </div>
+
+  <footer>
+    <p>Pretty & Paid · Plan It. Secure It. Profit.<br />
+    <span style="opacity:0.5;">© 2026 Life With Kemi · All Rights Reserved</span></p>
+  </footer>
+
+</body>
 </html>

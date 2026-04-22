@@ -1,142 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Payment | Pretty &amp; Paid</title>
-    <meta
-      name="description"
-      content="Choose your Pretty and Paid payment option and secure your space in the live room."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body data-page="payment">
-    <nav>
-      <a class="nav-brand-wrap" href="index.html" aria-label="Pretty and Paid home">
-        <img class="nav-logo" src="logo.png" alt="Pretty and Paid logo" />
-        <span class="nav-brand">Pretty <span>&amp;</span> Paid</span>
-      </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
-      <div class="nav-links" id="nav-links">
-        <a href="index.html" data-page="home">Home</a>
-        <a href="about.html" data-page="about">About</a>
-        <a href="framework.html" data-page="framework">Framework</a>
-        <a href="marketing.html" data-page="marketing">Launch Plan</a>
-        <a href="payment.html" class="nav-cta" data-page="payment">Pay Now</a>
-      </div>
-    </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment | Pretty & Paid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8D5A3;
+      --gold-pale: #FAF6ED;
+      --deep: #1A1410;
+      --surface: #FAF8F5;
+      --text: #2C2018;
+      --text-muted: #6B5744;
+      --text-dim: #A89080;
+      --border: rgba(201,168,76,0.2);
+      --border-strong: rgba(201,168,76,0.4);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Lato', sans-serif;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--surface); color: var(--text); font-family: var(--font-body); line-height: 1.7; }
 
-    <section class="page-hero">
-      <div class="deco-line deco-line-1"></div>
-      <div class="page-hero-inner container">
-        <div class="page-kicker reveal">Payment</div>
-        <h1 class="page-hero-title reveal">Choose your payment option and secure your space.</h1>
-        <p class="page-hero-sub reveal">
-          Use the option that fits you best. Pay in full today or choose the payment plan
-          option to hold your seat in the Pretty &amp; Paid room.
-        </p>
-      </div>
-    </section>
+    nav { background: var(--deep); padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { height: 36px; width: auto; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
 
-    <section class="section-deeper">
-      <div class="container">
-        <div class="section-pre reveal">Choose An Option</div>
-        <h2 class="section-title reveal">Two ways to reserve your place in the room.</h2>
-        <div class="payment-grid">
-          <article class="payment-card reveal">
-            <div class="page-card-meta">Pay In Full</div>
-            <div class="payment-price">$997</div>
-            <h3 class="page-card-title">One payment. Full access.</h3>
-            <p class="payment-text">
-              Best for women who want to pay once, lock in their seat immediately, and move
-              forward with no additional payment steps.
-            </p>
-            <div class="payment-actions">
-              <a class="payment-button" href="https://connect.intuit.com/pay/prettyandpaid/scs-v1-c7fe5f55995c456b9ad461c8ec1b51b727fa8fd779684f4cbba2b8072b050e8d746d7bcfe217458395af5f5ec993dd08?locale=EN_US&amp;cta=saveandcopylink" target="_blank" rel="noreferrer">Pay In Full</a>
-            </div>
-            <p class="payment-note">Replace this link with your live Stripe, PayPal, or checkout URL.</p>
-          </article>
+    .page-hero { text-align: center; padding: 4rem 2rem 3rem; max-width: 640px; margin: 0 auto; }
+    .eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .eyebrow::before, .eyebrow::after { content: ''; display: inline-block; width: 40px; height: 0.5px; background: var(--gold-light); }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(30px, 4vw, 46px); font-weight: 400; color: var(--text); line-height: 1.25; margin-bottom: 1rem; }
+    .page-hero h1 em { font-style: italic; color: var(--gold); }
+    .page-hero p { font-size: 15px; color: var(--text-muted); line-height: 1.8; font-weight: 300; }
 
-          <article class="payment-card reveal">
-            <div class="page-card-meta">Payment Plan</div>
-            <div class="payment-price">Flexible</div>
-            <h3 class="page-card-title">Split the investment into payments.</h3>
-            <p class="payment-text">
-              Best for women who want to secure their seat with a payment option that breaks
-              the investment into a more manageable plan.
-            </p>
-            <div class="payment-actions">
-              <a class="payment-button payment-button--secondary" href="contact.html">Contact Us</a>
-            </div>
-            <p class="payment-note">Use the contact form to request payment-plan details and secure your space.</p>
-          </article>
+    /* PAYMENT OPTIONS */
+    .payment-section { max-width: 820px; margin: 0 auto; padding: 0 2rem 5rem; }
+    .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
 
-          <article class="payment-card reveal">
-            <div class="page-card-meta">Need Help?</div>
-            <div class="payment-price">Questions</div>
-            <h3 class="page-card-title">Need clarity before you pay?</h3>
-            <p class="payment-text">
-              If you want help deciding between the options or need more context before
-              checkout, use the registration page to reach out first.
-            </p>
-            <div class="payment-actions">
-              <a class="payment-button payment-button--secondary" href="contact.html">Ask A Question</a>
-            </div>
-            <p class="payment-note">This keeps the payment flow clean while still giving you a support path.</p>
-          </article>
+    .option-card { background: white; border: 0.5px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: box-shadow 0.2s; }
+    .option-card:hover { box-shadow: 0 4px 24px rgba(201,168,76,0.15); }
+    .option-card.featured { border: 2px solid var(--gold); }
+
+    .option-badge { background: var(--gold); color: var(--deep); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 16px; text-align: center; }
+
+    .option-body { padding: 2rem; }
+    .option-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px; }
+    .option-price { font-family: var(--font-display); font-size: 48px; font-weight: 400; color: var(--text); line-height: 1; margin-bottom: 4px; }
+    .option-note { font-size: 13px; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.5; }
+
+    .option-includes { list-style: none; margin-bottom: 1.75rem; }
+    .option-includes li { font-size: 14px; color: var(--text-muted); padding: 6px 0; border-bottom: 0.5px solid var(--border); display: flex; align-items: flex-start; gap: 10px; }
+    .option-includes li:last-child { border-bottom: none; }
+    .option-includes li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    .option-btn { display: block; padding: 14px; background: var(--gold); color: var(--deep); border-radius: 50px; font-family: var(--font-body); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; text-align: center; transition: all 0.2s; }
+    .option-btn:hover { background: var(--gold-light); }
+    .option-btn.outline { background: transparent; border: 1.5px solid var(--gold); color: var(--gold); }
+    .option-btn.outline:hover { background: var(--gold-pale); }
+
+    /* INSTALLMENT BREAKDOWN */
+    .installment-breakdown { background: var(--gold-pale); border: 0.5px solid var(--border-strong); border-radius: var(--radius); padding: 1.5rem; margin-top: 1rem; }
+    .installment-breakdown h4 { font-family: var(--font-display); font-size: 16px; font-weight: 500; color: var(--text); margin-bottom: 1rem; }
+    .installment-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 0.5px solid var(--border); font-size: 14px; }
+    .installment-row:last-child { border-bottom: none; }
+    .installment-row span:first-child { color: var(--text-muted); }
+    .installment-row span:last-child { font-weight: 700; color: var(--text); }
+
+    /* WHAT IS INCLUDED */
+    .included-section { background: var(--deep); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 3rem; }
+    .included-section h3 { font-family: var(--font-display); font-size: 24px; font-weight: 400; color: white; margin-bottom: 1.5rem; text-align: center; }
+    .included-section h3 em { font-style: italic; color: var(--gold); }
+    .included-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .included-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+    .included-item::before { content: '✦'; color: var(--gold); font-size: 10px; flex-shrink: 0; margin-top: 3px; }
+
+    /* FIT CHECK */
+    .fit-section { margin-bottom: 3rem; }
+    .fit-section h3 { font-family: var(--font-display); font-size: 22px; font-weight: 400; color: var(--text); margin-bottom: 1.25rem; text-align: center; }
+    .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .fit-card { background: white; border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem; font-size: 14px; color: var(--text-muted); line-height: 1.6; display: flex; gap: 10px; align-items: flex-start; }
+    .fit-card::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    footer { background: var(--deep); border-top: 0.5px solid rgba(255,255,255,0.06); padding: 2rem; text-align: center; }
+    footer p { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 2; }
+
+    @media (max-width: 640px) {
+      .options-grid { grid-template-columns: 1fr; }
+      .included-list { grid-template-columns: 1fr; }
+      .fit-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="logo.png" alt="Pretty & Paid" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="framework.html">Framework</a></li>
+      <li><a href="marketing.html">Launch Plan</a></li>
+      <li><a href="payment.html" class="active">Pay Now</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <div class="eyebrow">Secure Your Seat</div>
+    <h1>Choose the option that <em>fits you best.</em></h1>
+    <p>20 seats. One day. Everything you need to plan, fund, and execute your conference. Pay in full or choose the installment plan — both options reserve your seat in the room.</p>
+  </div>
+
+  <div class="payment-section">
+
+    <div class="options-grid">
+
+      <!-- PAY IN FULL -->
+      <div class="option-card">
+        <div class="option-body">
+          <div class="option-label">Pay In Full</div>
+          <div class="option-price">$997</div>
+          <div class="option-note">One payment. Full access. Seat locked immediately.</div>
+          <ul class="option-includes">
+            <li>Full day live masterclass with Kemi</li>
+            <li>Complete 12-pillar framework</li>
+            <li>Six-week launch strategy</li>
+            <li>Sponsorship system & money model</li>
+            <li>Direct access & Q&A throughout the day</li>
+          </ul>
+          <a href="https://connect.intuit.com/pay/prettyandpaid/scs-v1-c7fe5f55995c456b9ad461c8ec1b51b727fa8fd779684f4cbba2b8072b050e8d746d7bcfe217458395af5f5ec993dd08?locale=EN_US&cta=saveandcopylink" target="_blank" class="option-btn">Pay In Full →</a>
         </div>
       </div>
-    </section>
 
-    <section class="section-dark">
-      <div class="container">
-        <div class="section-pre reveal">Before You Pay</div>
-        <h2 class="section-title reveal">Make sure the room is the right fit for where you are now.</h2>
-        <div class="detail-grid">
-          <article class="detail-card reveal">
-            <h3 class="detail-title">You feel called to host a room</h3>
-            <p class="detail-text">You are not casually curious. You know there is a conference or gathering you are meant to lead.</p>
-          </article>
-          <article class="detail-card reveal">
-            <h3 class="detail-title">You are ready for execution</h3>
-            <p class="detail-text">You want more than inspiration. You want a practical framework and real next steps.</p>
-          </article>
-          <article class="detail-card reveal">
-            <h3 class="detail-title">You are willing to make bold asks</h3>
-            <p class="detail-text">Sponsors, partners, and visibility are part of the journey, and you are ready to grow into that.</p>
-          </article>
-          <article class="detail-card reveal">
-            <h3 class="detail-title">You want both impact and structure</h3>
-            <p class="detail-text">The room is for women who care about transformation and want a strong operational plan underneath it.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <div class="footer-brand-wrap">
-          <img class="nav-logo" src="logo.png" alt="Pretty and Paid logo" />
-          <div>
-            <div class="footer-name">Pretty <span>&amp;</span> Paid</div>
-            <div class="footer-tagline">Plan It. Secure It. Profit.</div>
+      <!-- PAYMENT PLAN -->
+      <div class="option-card featured">
+        <div class="option-badge">Payment Plan Available</div>
+        <div class="option-body">
+          <div class="option-label">3-Payment Plan</div>
+          <div class="option-price">$333</div>
+          <div class="option-note">Start today. Remaining payments 30 & 60 days later.</div>
+          <ul class="option-includes">
+            <li>Full day live masterclass with Kemi</li>
+            <li>Complete 12-pillar framework</li>
+            <li>Six-week launch strategy</li>
+            <li>Sponsorship system & money model</li>
+            <li>Direct access & Q&A throughout the day</li>
+          </ul>
+          <a href="mailto:str84yaheart@gmail.com?subject=Pretty%20%26%20Paid%20Payment%20Plan&body=Hi%20Kemi%2C%20I%20would%20like%20to%20reserve%20my%20seat%20using%20the%203-payment%20plan%20of%20%24333.%20Please%20send%20me%20the%20payment%20details." class="option-btn outline">Request Payment Plan →</a>
+          <div class="installment-breakdown">
+            <h4>Payment Schedule</h4>
+            <div class="installment-row"><span>Payment 1 — Today</span><span>$333</span></div>
+            <div class="installment-row"><span>Payment 2 — Day 30</span><span>$333</span></div>
+            <div class="installment-row"><span>Payment 3 — Day 60</span><span>$333</span></div>
           </div>
         </div>
-        <div class="footer-links">
-          <a href="about.html">About</a>
-          <a href="framework.html">Framework</a>
-          <a href="marketing.html">Launch Plan</a>
-          <a href="payment.html">Payment</a>
-        </div>
       </div>
-    </footer>
 
-    <script src="script.js"></script>
-  </body>
+    </div>
+
+    <!-- WHAT IS INCLUDED -->
+    <div class="included-section">
+      <h3>Everything inside the <em>Pretty & Paid</em> room</h3>
+      <div class="included-list">
+        <div class="included-item">Full one-day live masterclass experience</div>
+        <div class="included-item">12-pillar conference planning framework</div>
+        <div class="included-item">Sponsor strategy & outreach system</div>
+        <div class="included-item">Six-week organic launch plan</div>
+        <div class="included-item">Event-day execution & CEO leadership</div>
+        <div class="included-item">Money model — tickets, sponsors & add-ons</div>
+        <div class="included-item">Direct Q&A access with Kemi all day</div>
+        <div class="included-item">15 years of real rooms distilled into one day</div>
+      </div>
+    </div>
+
+    <!-- FIT CHECK -->
+    <div class="fit-section">
+      <h3>This room is for you if —</h3>
+      <div class="fit-grid">
+        <div class="fit-card">You feel called to host a room and you are ready to stop waiting for perfect conditions.</div>
+        <div class="fit-card">You want execution — not more inspiration — and you are ready for real next steps.</div>
+        <div class="fit-card">You are willing to make bold asks for sponsorships, partnerships, and visibility.</div>
+        <div class="fit-card">You want your room to have both impact and a strong financial structure behind it.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Pretty & Paid · Plan It. Secure It. Profit.<br />
+    Questions? Email <a href="mailto:str84yaheart@gmail.com" style="color: var(--gold); text-decoration: none;">str84yaheart@gmail.com</a><br />
+    <span style="opacity:0.5;">© 2026 Life With Kemi · All Rights Reserved</span></p>
+  </footer>
+
+</body>
 </html>
