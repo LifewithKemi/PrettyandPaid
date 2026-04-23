@@ -1,220 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Framework | Pretty & Paid</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    :root{
-      --bg-main:#1a0508;--bg-dark:#130308;--bg-panel:#220a14;--bg-panel-2:#2a0e18;
-      --pink:#d4156b;--pink-deep:#a00d50;--pink-light:#fce4f1;--pink-mid:#f7c8df;
-      --black:#200810;--off-white:#fdf8fa;--white:#ffffff;
-      --border:rgba(212,21,107,0.18);--shadow:0 24px 64px rgba(0,0,0,0.28);
-    }
-    html{scroll-behavior:smooth;}
-    body{font-family:"Montserrat",sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
-    a{color:inherit;text-decoration:none;}
-    img{display:block;max-width:100%;}
-
-    /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 48px;background:rgba(30,8,18,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,21,107,0.2);}
-    .nav-brand-wrap{display:inline-flex;align-items:center;gap:14px;}
-    .nav-logo{width:52px;height:52px;border-radius:50%;object-fit:cover;}
-    .nav-brand{font-family:"Playfair Display",serif;font-size:20px;font-weight:700;color:var(--white);letter-spacing:0.02em;}
-    .nav-brand span{color:var(--pink);font-style:italic;}
-    .nav-links{display:flex;align-items:center;gap:26px;list-style:none;}
-    .nav-links a{font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.72);transition:color 0.2s;}
-    .nav-links a:hover,.nav-links a.is-active{color:var(--white);}
-    .nav-cta{display:inline-flex;align-items:center;justify-content:center;background:var(--pink);color:var(--white);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:12px 28px;border-radius:2px;border:none;cursor:pointer;transition:background 0.2s,transform 0.2s;white-space:nowrap;text-decoration:none;}
-    .nav-cta:hover{background:var(--pink-deep);transform:translateY(-2px);}
-
-    /* PAGE HERO */
-    .page-hero{position:relative;overflow:hidden;background:var(--bg-main);padding:160px 24px 84px;border-bottom:1px solid var(--border);}
-    .page-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(212,21,107,0.28) 0%,transparent 70%);pointer-events:none;}
-    .page-hero::after{content:"";position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--pink),transparent);}
-    .page-hero-inner{position:relative;z-index:1;text-align:center;max-width:720px;margin:0 auto;}
-    .page-kicker{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(212,21,107,0.5);padding:8px 20px;border-radius:40px;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--pink);margin-bottom:32px;}
-    .page-hero-title{font-family:"Playfair Display",serif;font-size:clamp(40px,6vw,72px);font-weight:900;line-height:1.02;letter-spacing:-0.02em;margin:0 auto 18px;}
-    .page-hero-title em{color:var(--pink);font-style:italic;}
-    .page-hero-sub{font-family:"Cormorant Garamond",serif;font-size:clamp(20px,2.8vw,26px);font-style:italic;font-weight:300;color:rgba(255,255,255,0.85);max-width:620px;line-height:1.5;margin:0 auto;}
-
-    /* SECTIONS */
-    section{padding:100px 24px;}
-    .container{width:min(1100px,calc(100% - 48px));margin:0 auto;}
-    .section-pre{font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--pink);margin-bottom:16px;}
-    .section-title{font-family:"Playfair Display",serif;font-size:clamp(36px,5vw,56px);font-weight:900;line-height:1.05;letter-spacing:-0.02em;margin-bottom:20px;}
-    .section-title em{color:var(--pink);font-style:italic;}
-    .section-body{font-family:"Cormorant Garamond",serif;font-size:clamp(18px,2vw,22px);font-weight:300;line-height:1.8;color:rgba(255,255,255,0.75);max-width:720px;}
-    .section-body--center{margin-left:auto;margin-right:auto;text-align:center;}
-    .section-dark{background:var(--bg-panel);}
-    .section-deeper{background:var(--bg-panel-2);}
-    .text-center{text-align:center;}
-
-    /* PILLARS GRID */
-    .pillars-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(212,21,107,0.15);border:1px solid rgba(212,21,107,0.15);margin-top:64px;}
-    .pillar{position:relative;overflow:hidden;padding:36px 32px;background:var(--bg-panel-2);transition:background 0.3s;}
-    .pillar::after{content:"";position:absolute;bottom:0;left:0;width:100%;height:2px;background:var(--pink);transform:scaleX(0);transform-origin:left;transition:transform 0.35s;}
-    .pillar:hover{background:rgba(212,21,107,0.1);}
-    .pillar:hover::after{transform:scaleX(1);}
-    .pillar-num{font-family:"Playfair Display",serif;font-size:13px;font-weight:700;color:var(--pink);letter-spacing:0.1em;margin-bottom:12px;text-transform:uppercase;}
-    .pillar-title{font-family:"Playfair Display",serif;font-size:22px;font-weight:700;line-height:1.2;margin-bottom:10px;}
-    .pillar-lock{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);}
-    .pillar-lock svg{width:13px;height:13px;flex-shrink:0;}
-
-    /* LOCKED BANNER */
-    .locked-banner{background:var(--pink);padding:80px 24px;text-align:center;position:relative;overflow:hidden;}
-    .locked-banner::before{content:"\201C";position:absolute;top:-60px;left:40px;font-size:300px;font-weight:900;color:rgba(0,0,0,0.1);line-height:1;pointer-events:none;}
-    .locked-banner-inner{position:relative;z-index:1;max-width:640px;margin:0 auto;}
-    .locked-title{font-family:"Playfair Display",serif;font-size:clamp(28px,4vw,48px);font-style:italic;font-weight:400;line-height:1.3;margin-bottom:16px;}
-    .locked-body{font-family:"Cormorant Garamond",serif;font-size:clamp(18px,2.2vw,24px);font-weight:300;line-height:1.6;color:rgba(255,255,255,0.88);margin-bottom:36px;}
-    .locked-btn{display:inline-flex;align-items:center;justify-content:center;background:var(--white);color:var(--pink);font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:18px 42px;border-radius:2px;transition:background 0.2s,transform 0.2s;}
-    .locked-btn:hover{background:var(--pink-light);transform:translateY(-2px);}
-
-    /* TAKEAWAYS */
-    .takeaway-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(212,21,107,0.15);border:1px solid rgba(212,21,107,0.15);margin-top:64px;}
-    .takeaway-card{position:relative;overflow:hidden;padding:36px 32px;background:var(--bg-panel);transition:background 0.3s;}
-    .takeaway-card::before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--pink);opacity:0;transition:opacity 0.3s;}
-    .takeaway-card:hover{background:rgba(212,21,107,0.08);}
-    .takeaway-card:hover::before{opacity:1;}
-    .takeaway-card h4{font-family:"Playfair Display",serif;font-size:24px;font-weight:700;line-height:1.2;margin-bottom:12px;}
-    .takeaway-card p{font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:300;line-height:1.6;color:rgba(255,255,255,0.8);}
-
-    /* CTA */
-    .cta-section{text-align:center;background:linear-gradient(180deg,#220a14 0%,#18050a 100%);padding:100px 24px;}
-    .cta-price{font-family:"Playfair Display",serif;font-size:clamp(48px,6vw,80px);font-weight:900;color:var(--pink);line-height:1;margin-bottom:8px;}
-    .cta-note{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:40px;}
-    .hero-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:var(--pink);color:var(--white);font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:18px 42px;border-radius:2px;border:none;cursor:pointer;transition:background 0.3s,transform 0.3s;text-decoration:none;}
-    .hero-btn:hover{background:var(--pink-deep);transform:translateY(-2px);}
-    .hero-note{font-size:12px;color:rgba(255,255,255,0.42);margin-top:16px;letter-spacing:0.06em;}
-
-    /* FOOTER */
-    .site-footer{padding:44px 24px 56px;background:var(--bg-dark);border-top:1px solid rgba(212,21,107,0.18);}
-    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-    .footer-brand-wrap{display:inline-flex;align-items:center;gap:16px;}
-    .footer-logo{width:44px;height:44px;border-radius:50%;object-fit:cover;}
-    .footer-name{font-family:"Playfair Display",serif;font-size:18px;font-weight:700;}
-    .footer-name span{color:var(--pink);font-style:italic;}
-    .footer-copy{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
-    .footer-links{display:flex;gap:18px;flex-wrap:wrap;list-style:none;}
-    .footer-links a{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.68);}
-    .footer-links a:hover{color:var(--white);}
-
-    @media(max-width:980px){
-      nav{padding:14px 22px;}
-      .nav-links{display:none;}
-      .pillars-grid{grid-template-columns:1fr 1fr;}
-      .takeaway-grid{grid-template-columns:1fr;}
-    }
-    @media(max-width:640px){
-      .pillars-grid{grid-template-columns:1fr;}
-      section{padding:76px 14px;}
-    }
-  </style>
-</head>
-<body>
-
-  <nav>
-    <a class="nav-brand-wrap" href="index.html">
-      <img class="nav-logo" src="logo.png" alt="Pretty & Paid" />
-      <span class="nav-brand">Pretty <span>&</span> Paid</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="framework.html" class="is-active">Framework</a></li>
-      <li><a href="marketing.html">Launch Plan</a></li>
-      <li><a href="payment.html" class="nav-cta">Pay Now</a></li>
-    </ul>
-  </nav>
-
-  <div class="page-hero">
-    <div class="page-hero-inner">
-      <div class="page-kicker">The System</div>
-      <h1 class="page-hero-title">12 Pillars. One <em>Complete</em> Room.</h1>
-      <p class="page-hero-sub">Every successful conference is built on a foundation of decisions most women never get taught. Pretty & Paid covers all of them — in one day, in the room, with you.</p>
-    </div>
-  </div>
-
-  <section class="section-deeper">
-    <div class="container">
-      <div class="text-center">
-        <p class="section-pre">The Framework</p>
-        <h2 class="section-title">The 12-Pillar <em>Operating System</em></h2>
-        <p class="section-body section-body--center">The names are visible. The method is taught inside the room.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Framework | Pretty &amp; Paid</title>
+    <meta
+      name="description"
+      content="Explore the 12-pillar Pretty and Paid framework, the conference roadmap, and the event profit model."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="framework">
+    <nav>
+      <a class="nav-brand-wrap" href="index.html" aria-label="Pretty and Paid home">
+        <img class="nav-logo" src="logo.png" alt="Pretty and Paid logo" />
+        <span class="nav-brand">Pretty <span>&amp;</span> Paid</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" data-page="home">Home</a>
+        <a href="about.html" data-page="about">About</a>
+        <a href="framework.html" data-page="framework">Framework</a>
+        <a href="marketing.html" data-page="marketing">Launch Plan</a>
+        <a href="https://square.link/u/MGL2iPAT" class="nav-cta" data-page="payment" target="_blank" rel="noreferrer">Pay Now</a>
       </div>
-      <div class="pillars-grid">
-        <div class="pillar"><div class="pillar-num">01</div><div class="pillar-title">Concept & Vision</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
-        <div class="pillar"><div class="pillar-num">02</div><div class="pillar-title">Faith as Foundation</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
-        <div class="pillar"><div class="pillar-num">03</div><div class="pillar-title">Venue Strategy</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
-        <div class="pillar"><div class="pillar-num">04</div><div class="pillar-title">Sponsorship</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
-        <div class="pillar"><div class="pillar-num">05</div><div class="pillar-title">Community Involvement</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
-        <div class="pillar"><div class="pillar-num">06</div><div class="pillar-title">Team Building</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
-        <div class="pillar"><div class="pillar-num">07</div><div class="pillar-title">Programming</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
-        <div class="pillar"><div class="pillar-num">08</div><div class="pillar-title">Experience Design</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
-        <div class="pillar"><div class="pillar-num">09</div><div class="pillar-title">Marketing & Sales</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
-        <div class="pillar"><div class="pillar-num">10</div><div class="pillar-title">Event-Day Execution</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
-        <div class="pillar"><div class="pillar-num">11</div><div class="pillar-title">The Money Model</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
-        <div class="pillar"><div class="pillar-num">12</div><div class="pillar-title">After The Room</div><div class="pillar-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Revealed in the room</div></div>
+    </nav>
+
+    <section class="page-hero">
+      <div class="deco-line deco-line-1"></div>
+      <div class="page-hero-inner container">
+        <div class="page-kicker reveal">The Framework</div>
+        <h1 class="page-hero-title reveal" style="text-align: center;">The Pretty <em>&amp;</em> Paid system moves a room from idea to execution.</h1>
+        <p class="page-hero-sub reveal">
+          This is the architecture behind the masterclass: concept, venue, sponsors,
+          marketing, event-day leadership, and a money model that supports the vision.
+        </p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="locked-banner">
-    <div class="locked-banner-inner">
-      <p class="locked-title">"The how lives inside the room."</p>
-      <p class="locked-body">Every pillar is unpacked live with Kemi — the strategy, the language, the sequence, and the execution. This is not a workbook you read alone. It is a room you walk through together.</p>
-      <a href="payment.html" class="locked-btn">Reserve My Seat →</a>
-    </div>
-  </div>
-
-  <section class="section-dark">
-    <div class="container">
-      <div class="text-center">
-        <p class="section-pre">What You Walk Away With</p>
-        <h2 class="section-title">Not inspiration.<br /><em>A real operating plan.</em></h2>
-      </div>
-      <div class="takeaway-grid">
-        <div class="takeaway-card"><h4>A Conference You Can Execute</h4><p>You leave with a clear concept, a venue strategy, and a plan that is ready to move — not still sitting in your head.</p></div>
-        <div class="takeaway-card"><h4>A Sponsorship Approach That Works</h4><p>You will know how to position your room so that businesses and aligned partners want to support it before the doors open.</p></div>
-        <div class="takeaway-card"><h4>A Money Model That Makes Sense</h4><p>Tickets, sponsors, vendors, and add-ons — structured in a way that makes the room profitable, not just beautiful.</p></div>
-        <div class="takeaway-card"><h4>The Confidence to Lead the Room</h4><p>You will understand what it means to be the CEO of your conference — and how to show up that way from day one.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-section">
-    <div class="container">
-      <p class="section-pre">The Next Step</p>
-      <h2 class="section-title">The system is waiting.<br /><em>So is your room.</em></h2>
-      <p class="section-body section-body--center">20 seats. One day. Everything you need to stop planning and start building.</p>
-      <div class="cta-price" style="margin-top:48px;">$997</div>
-      <p class="cta-note">Payment plans available · 3 payments of $333</p>
-      <a href="payment.html" class="hero-btn">Reserve My Seat →</a>
-      <p class="hero-note">Limited to 20 women per cohort</p>
-    </div>
-  </section>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand-wrap">
-          <img class="footer-logo" src="logo.png" alt="Pretty & Paid" />
-          <span class="footer-name">Pretty <span>&</span> Paid</span>
+    <section class="section-deeper">
+      <div class="container">
+        <div class="section-pre reveal">The 12 Pillars</div>
+        <h2 class="section-title reveal">Each pillar solves a different part of building the room well.</h2>
+        <div class="framework-grid">
+          <article class="framework-card reveal"><div class="framework-num">01</div><h3 class="page-card-title">Concept &amp; Vision</h3><p class="framework-text">Clarify the promise, the audience, and the transformation at the center of the room.</p></article>
+          <article class="framework-card reveal"><div class="framework-num">02</div><h3 class="page-card-title">Faith As Foundation</h3><p class="framework-text">Keep prayer, purpose, and clarity central to every planning decision that follows.</p></article>
+          <article class="framework-card reveal"><div class="framework-num">03</div><h3 class="page-card-title">Venue Strategy</h3><p class="framework-text">Secure the right room with strong outreach, positioning, and relationship language.</p></article>
+          <article class="framework-card reveal"><div class="framework-num">04</div><h3 class="page-card-title">Sponsorship</h3><p class="framework-text">Package the vision so businesses and aligned partners want to underwrite the experience.</p></article>
+          <article class="framework-card reveal"><div class="framework-num">05</div><h3 class="page-card-title">Community Involvement</h3><p class="framework-text">Use local visibility and aligned partners to widen the reach and deepen the impact.</p></article>
+          <article class="framework-card reveal"><div class="framework-num">06</div><h3 class="page-card-title">Team Building</h3><p class="framework-text">Recruit the people who help the room move with structure, calm, and excellence.</p></article>
+          <article class="framework-card reveal"><div class="framework-num">07</div><h3 class="page-card-title">Programming</h3><p class="framework-text">Shape the speaker flow, timing, and guest experience so the room feels intentional.</p></article>
+          <article class="framework-card reveal"><div class="framework-num">08</div><h3 class="page-card-title">Experience Design</h3><p class="framework-text">Elevate the room with details that feel premium without losing strategic restraint.</p></article>
+          <article class="framework-card reveal"><div class="framework-num">09</div><h3 class="page-card-title">Marketing &amp; Sales</h3><p class="framework-text">Create a message path that moves women from awareness to registration.</p></article>
+          <article class="framework-card reveal"><div class="framework-num">10</div><h3 class="page-card-title">Event-Day Execution</h3><p class="framework-text">Lead like the CEO of the room with real operations behind the atmosphere.</p></article>
+          <article class="framework-card reveal"><div class="framework-num">11</div><h3 class="page-card-title">The Money Model</h3><p class="framework-text">Stack tickets, sponsors, vendors, and add-ons into a profitable room structure.</p></article>
+          <article class="framework-card reveal"><div class="framework-num">12</div><h3 class="page-card-title">After The Room</h3><p class="framework-text">Capture proof, follow up well, and build momentum for what comes next.</p></article>
         </div>
-        <ul class="footer-links">
-          <li><a href="about.html">About</a></li>
-          <li><a href="framework.html">Framework</a></li>
-          <li><a href="marketing.html">Launch Plan</a></li>
-          <li><a href="payment.html">Payment</a></li>
-        </ul>
-        <p class="footer-copy">© 2026 Life With Kemi</p>
       </div>
-    </div>
-  </footer>
+    </section>
 
-</body>
+    <section class="section-dark">
+      <div class="container">
+        <div class="section-pre reveal">Planning Rhythm</div>
+        <h2 class="section-title reveal">The room also teaches a clear planning sequence instead of random busywork.</h2>
+        <div class="detail-grid">
+          <article class="detail-card reveal"><h3 class="detail-title">12 Weeks Out</h3><p class="detail-text">Lock the concept, date, venue direction, and sponsor target list.</p></article>
+          <article class="detail-card reveal"><h3 class="detail-title">8 Weeks Out</h3><p class="detail-text">Begin sponsor momentum, shape the speaker flow, and finalize your room identity.</p></article>
+          <article class="detail-card reveal"><h3 class="detail-title">6 Weeks Out</h3><p class="detail-text">Open registration and begin the content cadence that fills the room organically.</p></article>
+          <article class="detail-card reveal"><h3 class="detail-title">2 Weeks Out</h3><p class="detail-text">Confirm logistics, materials, guest communication, and volunteer clarity.</p></article>
+        </div>
+        <div class="proof-grid proof-grid--framework">
+          <figure class="proof-card reveal">
+            <img src="hghb-6.png" alt="Polaroid collage of speakers and event guests from Hey Girl Hey" />
+          </figure>
+          <figure class="proof-card reveal">
+            <img src="hghb-7.png" alt="Polaroid collage featuring event attendees and stage moments from Hey Girl Hey" />
+          </figure>
+          <figure class="proof-card reveal">
+            <img src="hghb-8.png" alt="Polaroid collage showing audience engagement and attendee photos from Hey Girl Hey" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-light">
+      <div class="container">
+        <div class="section-pre reveal">Money Model</div>
+        <h2 class="section-title reveal">The room is designed to create impact and support profit potential.</h2>
+        <div class="page-card-grid">
+          <article class="page-card reveal">
+            <div class="page-card-meta">Starter Example</div>
+            <h3 class="page-card-title">A smaller room can still work.</h3>
+            <p class="page-card-text">50 tickets at a modest price point plus a small number of aligned sponsors can still create a strong beginning.</p>
+          </article>
+          <article class="page-card reveal">
+            <div class="page-card-meta">Growth Example</div>
+            <h3 class="page-card-title">A fuller model stacks revenue.</h3>
+            <p class="page-card-text">Sponsors, vendor tables, premium upgrades, and merchandise all create ways for the room to pay well.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand-wrap">
+          <img class="nav-logo" src="logo.png" alt="Pretty and Paid logo" />
+          <div>
+            <div class="footer-name">Pretty <span>&amp;</span> Paid</div>
+            <div class="footer-tagline">Plan It. Secure It. Profit.</div>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="framework.html">Framework</a>
+          <a href="marketing.html">Launch Plan</a>
+          <a href="https://square.link/u/MGL2iPAT" target="_blank" rel="noreferrer">Payment</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>
